@@ -1,0 +1,1074 @@
+/* Updated Lead.css to match Record.css styling */
+:root {
+    --primary-color: #4a6cf7;
+    --primary-dark: #3a5ce5;
+    --primary-light: #eef2ff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;  /* Matches customer.css */
+    --text-color: #495057;
+    --text-muted: #6c757d;
+    --text-light: #f8f9fa;
+    --border-color: #e9ecef;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --background-color: #f8f9fa;
+    --transition: all 0.3s ease;  /* Matches customer.css */
+    /* Updated font-family to match Record.css */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Added from customer.css */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.5; /* Updated to match Record.css line-height */
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 250px 1fr 0px;
+    grid-template-areas: "sidebar main detail";
+    min-height: 100vh;
+    transition: grid-template-columns 0.3s ease;
+}
+
+.container.detail-open {
+    grid-template-columns: 250px 1fr 350px;
+}
+
+/* Sidebar styling - updated to match Record.css */
+.sidebar {
+    width: 250px;
+    background: var(--dark-color);
+    color: white;
+    padding: 20px 0;
+    transition: var(--transition);
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.sidebar-header {
+    padding: 0 20px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon {
+    background: var(--primary-color);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.nav-menu {
+    padding: 20px 0;
+}
+
+.nav-menu ul {
+    list-style: none;
+}
+
+.nav-item {
+    margin-bottom: 5px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border-left: 4px solid var(--primary-color);
+}
+
+.nav-link i {
+    margin-right: 10px;
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+
+/* Main Content Styles */
+.main-content {
+    grid-area: main;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Updated search bar to match Record.css */
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: var(--light-color);
+    border-radius: 8px;
+    padding: 0 15px;
+    width: 300px;
+}
+
+.search-bar input {
+    background: transparent;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    transition: var(--transition);
+}
+
+.search-bar input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(74, 108, 247, 0.1);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.notification-bell {
+    position: relative;
+    cursor: pointer;
+}
+
+.notification-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--danger-color);
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Updated user avatar to match Record.css */
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%; /* Changed from 8px to 50% */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Added avatar sizing variants from Record.css */
+.user-avatar.small {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+}
+
+.user-avatar.large {
+    width: 64px;
+    height: 64px;
+    font-size: 24px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3; /* Updated to match Record.css */
+}
+
+/* Added user-info-row from Record.css */
+.user-info-row {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 15px; /* Updated to match Record.css */
+}
+
+.user-role {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* ------ Stats Section --------- */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 30px;
+}
+
+.stat-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+}
+
+.leads-icon {
+    background-color: var(--primary-color);
+}
+
+.new-icon {
+    background-color: var(--info-color);
+}
+
+.follow-ups-icon {
+    background-color: var(--warning-color);
+}
+
+.converted-icon {
+    background-color: var(--success-color);
+}
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* -------  Actions Row ---------- */
+.actions-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--light-color);
+}
+
+.filter-group {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-group select {
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: white;
+    outline: none;
+    transition: var(--transition); /* Added from Record.css */
+}
+
+/* Added hover and focus effects from Record.css */
+.filter-group select:hover {
+    border-color: var(--primary-light);
+}
+
+.filter-group select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(74, 108, 247, 0.1);
+    outline: none;
+}
+
+/* ========== Lead Table ============ */
+/* Not modifying table section as instructed */
+.lead-table-section {
+    padding: 0 30px 30px;
+}
+
+.lead-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.lead-table th {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    text-align: left;
+    padding: 15px 20px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.lead-table td {
+    padding: 15px 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.lead-name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.lead-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.email {
+    font-size: 14px;
+}
+
+.phone {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* Status Badge Styles - Standardized Version */
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.status-badge:hover {
+    opacity: 0.9;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.status-new { background: #d4edda; }
+.status-contacted { background: #fff3cd; }
+.status-inprogress { background: #7c9bbc; }
+.status-closed { background: #f8d7da; }
+
+
+.source-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    background-color: #f0f0f0;
+    border-radius: 16px;
+    font-size: 12px;
+    color: var(--text-color);
+}
+
+.date-info {
+font-size: 14px;
+}
+
+.row-actions {
+display: flex;
+gap: 8px;
+}
+
+.row-actions button {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.row-actions button:hover {
+    background-color: var(--light-color);
+}
+
+/* ================= Lead Detail Sidebar ================= */
+.lead-detail {
+    grid-area: detail;
+    background-color: white;
+    border-left: 1px solid var(--border-color);
+    overflow-y: auto;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    width: 350px;
+}
+
+.lead-detail.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--text-muted);
+    /* Added from Record.css */
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.close-btn:hover {
+    background-color: var(--light-color);
+    color: var(--danger-color);
+}
+
+.detail-content {
+    padding: 20px;
+}
+
+.lead-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.lead-profile .lead-avatar {
+    width: 80px;
+    height: 80px;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.lead-profile h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.lead-status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.detail-section {
+    margin-bottom: 25px;
+}
+
+.detail-section h4 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+/* Updated detail fields to match Record.css styling */
+.detail-field {
+    display: flex;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-field:last-child {
+    border-bottom: none;
+}
+
+.detail-field label {
+    width: 30%;
+    font-weight: 500;
+    color: var(--text-muted);
+    font-size: 14px; /* Added from Record.css */
+}
+
+.detail-field span {
+    width: 70%;
+    font-size: 14px; /* Added from Record.css */
+}
+
+.record-details {
+    padding: 10px 0;
+}
+
+.detail-row {
+    display: flex;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    width: 150px; /* Slightly wider than record.css for longer labels */
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 14px;
+    text-align: left; /* Explicit left alignment */
+}
+
+.detail-value {
+    flex: 1;
+    font-size: 14px;
+    text-align: left; /* Explicit left alignment */
+}
+
+.modal-body {
+    padding: 0; /* Remove default padding to match record view */
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 15px 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.modal-content {
+    max-width: 600px; /* Match record modal width */
+}
+
+/* Updated interaction timeline to match Record.css */
+.interaction-timeline {
+    max-height: 300px;
+    overflow-y: auto;
+    border-left: 2px solid var(--border-color); /* Added from Record.css */
+    padding-left: 20px; /* Added from Record.css */
+    margin-top: 16px; /* Added from Record.css */
+}
+
+.interaction-item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+    position: relative; /* Added from Record.css */
+}
+
+.interaction-item:last-child {
+    border-bottom: none;
+}
+
+/* Added timeline marker from Record.css */
+.interaction-item::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    left: -26px;
+    top: 14px;
+}
+
+.interaction-time {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.interaction-type {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.interaction-content {
+    font-size: 14px;
+    color: var(--text-color); /* Updated to match Record.css */
+}
+
+.action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+/* =========== Modal ==================*/
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 10px;
+    width: 600px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky; /* Added from Record.css */
+    top: 0; /* Added from Record.css */
+    background-color: white; /* Added from Record.css */
+    z-index: 1; /* Added from Record.css */
+}
+
+.modal-header h2 {
+    font-size: 18px;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 14px; /* Added from Record.css */
+    color: var(--text-color); /* Updated to match Record.css */
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: white;
+    font-family: var(--font-family);
+    font-size: 14px;
+    transition: var(--transition); /* Added from Record.css */
+}
+
+/* Added focus styles from Record.css */
+.form-group input:focus,
+.form-group select:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(74, 108, 247, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* =========== Status Dropdown =========== */
+.status-dropdown {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 1001;
+    width: 150px;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.status-option {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.status-option:hover {
+    background-color: #f5f5f5;
+}
+
+.status-option.selected {
+    background-color: #e9f5ff;
+    font-weight: bold;
+}
+
+/* Status color classes */
+.status-option.status-new {
+    border-left: 4px solid #4caf50;
+}
+
+.status-option.status-contacted {
+    border-left: 4px solid #2196f3;
+}
+
+.status-option.status-inprogress {
+    border-left: 4px solid #ff9800;
+}
+
+.status-option.status-closed {
+    border-left: 4px solid #9e9e9e;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Readonly assignment display */
+.readonly-assigned {
+    padding: 10px 15px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    color: #6c757d;
+}
+
+/* Notifications */
+.notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #323232;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.notification.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+.container {
+    grid-template-columns: 200px 1fr 0px;
+}
+
+.container.detail-open {
+    grid-template-columns: 200px 1fr 300px;
+}
+
+.stats-section {
+    grid-template-columns: repeat(2, 1fr);
+}
+}
+
+@media (max-width: 992px) {
+    .container {
+        grid-template-columns: 70px 1fr 0px;  /* Changed from 60px to 70px */
+    }
+
+    .container.detail-open {
+        grid-template-columns: 70px 1fr 300px;  /* Changed from 60px to 70px */
+    }
+
+    .sidebar {
+        width: 70px;  /* Added this line */
+    }
+
+    .logo span, .nav-link span {
+        display: none;
+    }
+
+    .logo-icon {
+        margin: 0 auto;
+    }
+
+    .nav-link {
+        justify-content: center;
+        padding: 12px;  /* Changed from 15px 0 to 12px */
+    }
+
+    .nav-link i {
+        margin-right: 0;
+        font-size: 20px;  /* Added font-size property */
+    }
+
+    .main-content {
+        margin-left: 0;  /* Added this line */
+    }
+
+    .lead-table th:nth-child(4),
+    .lead-table td:nth-child(4) {
+        display: none;
+    }
+    
+    /* Added from Record.css */
+    .form-row {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+.header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.header-actions {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.search-bar {
+    width: 100%;
+}
+
+.actions-row {
+    flex-direction: column;
+    gap: 15px;
+}
+
+.filter-group {
+    width: 100%;
+}
+
+.filter-group select {
+    flex-grow: 1;
+}
+
+.lead-table th:nth-child(2),
+.lead-table td:nth-child(2),
+.lead-table th:nth-child(5),
+.lead-table td:nth-child(5) {
+    display: none;
+}
+
+.container.detail-open {
+    grid-template-columns: 0px 1fr 0px;
+}
+
+.lead-detail.active {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 350px;
+    z-index: 200;
+}
+}
+
+@media (max-width: 576px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-areas: "main";
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px;  /* Keep this as -250px */
+        z-index: 300;
+        transition: left 0.3s ease;  /* Use this specific transition */
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    /* Keep other Lead.css specific styles */
+    .lead-table th:nth-child(6),
+    .lead-table td:nth-child(6) {
+        display: none;
+    }
+
+    .stats-section {
+        grid-template-columns: 1fr;
+    }
+
+    .lead-detail.active {
+        max-width: 100%;
+    }
+
+    .nav-menu ul {
+        list-style: none;
+        height: calc(100vh - 100px);
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .nav-link[href="logout.php"]:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #ff6b6b;
+    }
+}
