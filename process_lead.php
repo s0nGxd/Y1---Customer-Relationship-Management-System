@@ -1,11 +1,5 @@
 <?php
-session_start();
-require_once 'db_connect.php';
-
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
+require_once 'auth.php';
 
 // Handle different lead actions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

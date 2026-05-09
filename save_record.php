@@ -1,11 +1,5 @@
 <?php
-// Display all PHP errors (for development)
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-// Start session
-session_start();
+require_once 'auth.php';
 
 // Initialize response array
 $response = array(
@@ -14,23 +8,6 @@ $response = array(
 );
 
 try {
-    // Include database connection
-    require_once 'db_connect.php';
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        throw new Exception("Connection failed: " . $conn->connect_error);
-    }
-
-    // Get current user ID from session
-    $userId = $_SESSION['user_id'] ?? 0;
-    
-    // Check if user is logged in
-    if (!$userId) {
-        throw new Exception("You must be logged in to perform this action");
-    }
-
     // Check what action is being performed
     $action = $_POST['action'] ?? '';
 

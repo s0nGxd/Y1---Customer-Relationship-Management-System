@@ -1,35 +1,14 @@
 <?php
-// Display all PHP errors
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+require_once 'auth.php';
 
-// Start session
-session_start();
-
-// Initialize variables
-$userRole = $_SESSION['role'] ?? '';
-$userId = $_SESSION['user_id'] ?? 0;
-
-// Ensure user is logged in and has appropriate permissions
-if (!$userId || ($userRole !== 'admin' && $userRole !== 'sales_rep')) {
-    // Return error response
+// Ensure user has appropriate permissions
+if ($userRole !== 'admin' && $userRole !== 'sales_rep') {
     header('Content-Type: application/json');
     echo json_encode(['success' => false, 'message' => 'Unauthorized access']);
     exit;
 }
 
-// Include database connection
-require_once 'db_connect.php';
-
 try {
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        throw new Exception("Connection failed: " . $conn->connect_error);
-    }
-
     // Check what action is being performed
     $action = $_POST['action'] ?? '';
 

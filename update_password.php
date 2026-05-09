@@ -1,12 +1,5 @@
 <?php
-session_start();
-require 'db_connect.php';
-
-// Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
+require_once 'auth.php';
 
 $user_id = $_SESSION['user_id'];
 $error = '';
@@ -26,7 +19,7 @@ if (empty($current_password) || empty($new_password) || empty($confirm_password)
     $error = "Password must be at least 8 characters long.";
 } else {
     // Get current password hash from database
-    $stmt = $conn->prepare("SELECT password FROM Users WHERE user_id = ?");
+    $stmt = $conn->prepare("SELECT password FROM users WHERE user_id = ?");
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -45,7 +38,7 @@ if (empty($current_password) || empty($new_password) || empty($confirm_password)
                 $new_hash = password_hash($new_password, PASSWORD_DEFAULT);
                 
                 // Update password in database
-                $update_stmt = $conn->prepare("UPDATE Users SET password = ? WHERE user_id = ?");
+                $update_stmt = $conn->prepare("UPDATE users SET password = ? WHERE user_id = ?");
                 $update_stmt->bind_param("si", $new_hash, $user_id);
                 
                 if ($update_stmt->execute()) {
@@ -66,9 +59,9 @@ $conn->close();
 
 // Store message in session and redirect back
 if (!empty($error)) {
-    $_SESSION['password_update_error'] = $error;
+    $_SESSION['profile_update_error'] = $error;
 } elseif (!empty($success)) {
-    $_SESSION['password_update_success'] = $success;
+    $_SESSION['profile_update_success'] = $success;
 }
 
 header("Location: profile.php#security");

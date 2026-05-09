@@ -1,12 +1,6 @@
 <?php
-session_start();
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'sales_rep') {
-    header("Location: login.php");
-    exit();
-}
-
-// Include database connection 
-require_once 'db_connect.php';
+require_once 'auth.php';
+require_role('sales_rep');
 
 // Get the current user's ID
 $current_user_id = $_SESSION['user_id'];
@@ -179,7 +173,7 @@ function getNotificationIcon($status) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales Dashboard | CRM</title>
-    <link rel="stylesheet" href="salesDash.css">
+    <link rel="stylesheet" href="css/salesDash.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Font -->
@@ -213,7 +207,7 @@ function getNotificationIcon($status) {
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="Record.php" class="nav-link">
+                        <a href="record.php" class="nav-link">
                             <i class="fas fa-file-invoice"></i>
                             <span>Records</span>
                         </a>
@@ -483,7 +477,7 @@ function getNotificationIcon($status) {
         </main>
     </div>
     
-    <script src="navigation.js"></script>
-    <script src="salesDash.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/salesDash.js"></script>
 </body>
 </html>

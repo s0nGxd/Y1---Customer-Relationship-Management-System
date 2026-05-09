@@ -1,16 +1,5 @@
 <?php
-// Start session at the very top
-session_start();
-
-// Include database connection 
-require_once 'db_connect.php';
-$conn = new mysqli($host, $username, $password, $dbname);
-
-// Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
+require_once 'auth.php';
 
 // Handle GET request for interaction details
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['interaction_id'])) {
@@ -429,7 +418,7 @@ function getInteractionDetails($conn, $interactionId, $userId, $userRole) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales Meeting Calendar</title>
-    <link rel="stylesheet" href="calendar.css">
+    <link rel="stylesheet" href="css/calendar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;900&family=Roboto:wght@100;900&family=Tajawal:wght@200;900&display=swap" rel="stylesheet">
 </head>
@@ -758,6 +747,7 @@ function getInteractionDetails($conn, $interactionId, $userId, $userRole) {
         ];
     }, $interactions ?? [])); ?>;
 </script>
-    <script src="calendar.js"></script>
-</body>
-</html>
+    <script src="js/calendar.js"></script>
+    </body>
+    </html>
+    <?php $conn->close(); ?>

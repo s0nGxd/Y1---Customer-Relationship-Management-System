@@ -1,6 +1,5 @@
 <?php
-session_start();
-require 'db_connect.php';
+require_once 'auth.php';
 $success_message = "";
 $error_message = "";
 
@@ -15,29 +14,23 @@ if (isset($_SESSION['profile_update_error'])) {
     unset($_SESSION['profile_update_error']);
 }
 
-// Redirect to login if not logged in
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
-
 // Get user data from database
 $user_id = $_SESSION['user_id'];
-$userRole = $_SESSION['role'] ?? '';
-$stmt = $conn->prepare("SELECT * FROM Users WHERE user_id = ?");
+$userRole = $_SESSION['role'];
+$stmt = $conn->prepare("SELECT * FROM users WHERE user_id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows === 0) {
-    // User not found, should not happen since we have session
-    header("Location: login.php");
+    // User not found
+    header("Location: logout.php");
     exit();
 }
 
 $user = $result->fetch_assoc();
 
-// Count customers for this sales rep (if they're a sales rep)
+// Count customers for this sales rep
 $customer_count = 0;
 if ($user['role'] == 'sales_rep') {
     $stmt = $conn->prepare("SELECT COUNT(*) as count FROM customer WHERE sales_rep_id = ?");
@@ -57,7 +50,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile | CRM</title>
-    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Font -->
@@ -377,7 +370,7 @@ $conn->close();
         </div>
     </div>
 
-    <script src="profile.js"></script>
+    <script src="js/profile.js"></script>
 </body>
 </html>
 

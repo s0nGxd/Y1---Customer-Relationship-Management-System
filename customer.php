@@ -1,29 +1,14 @@
 <?php
-// Display all PHP errors
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-// Start session
-session_start();
+require_once 'auth.php';
 
 // Initialize variables
-$userRole = $_SESSION['role'] ?? '';
-$userId = $_SESSION['user_id'] ?? 0;
+$userRole = $_SESSION['role'];
+$userId = $_SESSION['user_id'];
 $customerCount = 0;
-$userName = '';
+$userName = $_SESSION['name'] ?? '';
 $customerData = [];
 
 try {
-    // Include database connection
-    require_once 'db_connect.php';
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        throw new Exception("Connection failed: " . $conn->connect_error);
-    }
-
     // Function to get initials
     function getInitials($name) {
         $nameParts = explode(' ', $name);
@@ -118,7 +103,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Management | CRM</title>
-    <link rel="stylesheet" href="customer.css">
+    <link rel="stylesheet" href="css/customer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -484,7 +469,7 @@ try {
         </div>
     </div>
 
-    <script src="navigation.js"></script>
-    <script src="customer.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/customer.js"></script>
 </body>
 </html>

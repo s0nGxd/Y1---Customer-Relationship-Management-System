@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = trim($_POST['password']);
 
     // Modified query to include name
-    $stmt = $conn->prepare("SELECT user_id, username, password, role, name FROM Users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT user_id, username, password, role, name FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <title>Customer Relationship Management ABB</title>
 
         <!-- STYLESHEET -->
-        <link rel="stylesheet" href="login.css">
+        <link rel="stylesheet" href="css/login.css">
 
         <!-- MATERIAL CDN -->
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -114,9 +114,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
 
                         <button type="submit" class="btn">Log In</button>
-
-<!-- REMEMBER TO REMOVE SIGN UP CSS AND JAVA -->
-
                     </form>
                 
                 </div>
@@ -125,8 +122,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         
         </div>
-
-        <script src ="login.js"></script>
     </body>
 
 </html>

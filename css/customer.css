@@ -1,4 +1,4 @@
-/* Record.css - Updated with specific elements from customer.css */
+/* customer.css - Updated with font and sidebar styles from record.css */
 
 /* Base styling */
 :root {
@@ -28,7 +28,7 @@
 }
 
 body {
-    /* Updated font to match customer.css */
+    /* Updated font to match record.css */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--gray-lighter);
     color: var(--text-dark);
@@ -87,7 +87,7 @@ body {
     background-color: var(--gray-light);
 }
 
-/* Sidebar styling - matched with customer.css */
+/* Sidebar styling - updated to match record.css */
 .sidebar {
     width: 250px;
     background: var(--dark);
@@ -188,7 +188,6 @@ body {
     align-items: center;
 }
 
-/* Added search bar from customer.css */
 .search-bar {
     position: relative;
     margin-right: 20px;
@@ -209,6 +208,7 @@ body {
     box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.1);
 }
 
+/* Added placeholder styling from record.css */
 .search-bar input::placeholder {
     color: var(--text-muted);
 }
@@ -265,7 +265,7 @@ body {
     margin-right: 10px;
 }
 
-/* Added avatar sizing variants from customer.css */
+/* Add sizing variants for user avatar */
 .user-avatar.small {
     width: 30px;
     height: 30px;
@@ -282,7 +282,6 @@ body {
     line-height: 1.3;
 }
 
-/* Added user-info-row from customer.css */
 .user-info-row {
     display: flex;
     align-items: center;
@@ -313,7 +312,6 @@ body {
     display: flex;
     align-items: center;
     box-shadow: var(--shadow);
-    /* Removed hover effect to match customer.css */
 }
 
 .stat-icon {
@@ -339,7 +337,6 @@ body {
     background-color: var(--warning);
 }
 
-/* Added follow-ups-icon and revenue-icon from customer.css */
 .follow-ups-icon {
     background-color: var(--secondary);
 }
@@ -363,7 +360,7 @@ body {
     color: var(--text-muted);
 }
 
-/* Actions row */
+/* Actions row - updated to match record.css */
 .actions-row {
     display: flex;
     justify-content: space-between;
@@ -386,83 +383,133 @@ body {
     transition: var(--transition);
 }
 
+/* Added hover state from record.css */
 .filter-group select:hover {
     border-color: var(--primary-light);
 }
 
+/* Added focus state from record.css */
 .filter-group select:focus {
     border-color: var(--primary);
     box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.1);
     outline: none;
 }
 
-/* Record table styling - preserved dimensions from original record.css */
-.record-table-section {
+/* Dashboard panels */
+.dashboard-panels {
+    margin-bottom: 24px;
+}
+
+.panel {
     background-color: white;
     border-radius: 8px;
     box-shadow: var(--shadow);
     overflow: hidden;
+    margin-bottom: 24px;
 }
 
-.record-table {
+.panel-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.panel-body {
+    padding: 0;
+}
+
+/* Data Table Styling - keeping original as requested */
+.data-table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.record-table th,
-.record-table td {
+.data-table th,
+.data-table td {
     padding: 16px;
     text-align: left;
     border-bottom: 1px solid var(--border-color);
 }
 
-.record-table th {
+.data-table th {
     background-color: var(--gray-lighter);
     font-weight: 600;
     color: var(--text-muted);
     font-size: 14px;
 }
 
-.record-table tr {
+.data-table tr:hover {
+    background-color: rgba(67, 97, 238, 0.02);
     cursor: pointer;
-    transition: var(--transition);
 }
 
-.record-table tr:hover {
-    background-color: rgba(67, 97, 238, 0.05);
+.data-table .no-data {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-muted);
 }
 
-.record-table tr:last-child td {
-    border-bottom: none;
+/* Email and phone info - font size updated to match record.css */
+.email-info,
+.phone-number,
+.address {
+    font-size: 14px;
+    color: var(--text-dark);
 }
 
-/* Added status badge styling from customer.css */
-.status-badge {
-    display: inline-block;
-    padding: 4px 8px;
-    border-radius: 12px;
+/* Customer Profile Styling in Modal */
+.cust-profile {
+    padding: 20px 0;
+}
+
+.cust-profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.cust-profile-info {
+    margin-left: 16px;
+}
+
+.cust-profile-info h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.cust-profile-info p {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.cust-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.detail-item {
+    margin-bottom: 16px;
+}
+
+.detail-label {
     font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+.detail-value {
+    font-size: 14px;
     font-weight: 500;
-}
-
-.status-active {
-    background-color: rgba(45, 198, 83, 0.1);
-    color: var(--success);
-}
-
-.status-lead {
-    background-color: rgba(114, 9, 183, 0.1);
-    color: var(--secondary);
-}
-
-.status-prospect {
-    background-color: rgba(255, 183, 3, 0.1);
-    color: var(--warning);
-}
-
-.status-inactive {
-    background-color: rgba(108, 117, 125, 0.1);
-    color: var(--gray);
 }
 
 /* Modal styling */
@@ -473,18 +520,14 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     z-index: 30;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition);
 }
 
 .modal.active {
-    opacity: 1;
-    visibility: visible;
+    display: flex;
 }
 
 .modal-content {
@@ -493,8 +536,6 @@ body {
     width: 100%;
     max-width: 600px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    max-height: 90vh;
-    overflow-y: auto;
 }
 
 .modal-header {
@@ -503,10 +544,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
-    top: 0;
-    background-color: white;
-    z-index: 1;
 }
 
 .modal-header h2 {
@@ -514,52 +551,22 @@ body {
     font-weight: 600;
 }
 
-.close-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 32px;
-    height: 32px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    transition: var(--transition);
-}
-
-.close-btn:hover {
-    background-color: var(--gray-light);
-    color: var(--danger);
-}
-
 .modal-body {
     padding: 20px;
 }
 
-.modal-footer {
-    padding: 16px 20px;
-    border-top: 1px solid var(--border-color);
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    position: sticky;
-    bottom: 0;
-    background-color: white;
-}
-
-/* Form styling */
 .form-group {
     margin-bottom: 16px;
+    flex: 1;
 }
 
-/* Changed to match customer.css form-row */
 .form-row {
     display: flex;
     gap: 16px;
     margin-bottom: 16px;
 }
 
+/* Font styling updated to match record.css */
 label {
     display: block;
     margin-bottom: 6px;
@@ -568,6 +575,7 @@ label {
     color: var(--text-dark);
 }
 
+/* Added font family inherit from record.css */
 input, select, textarea {
     width: 100%;
     padding: 10px 12px;
@@ -591,76 +599,51 @@ input:focus, select:focus, textarea:focus {
     margin-top: 20px;
 }
 
-/* Record details styling */
-.record-details {
-    padding: 10px 0;
-}
-
-.detail-row {
-    display: flex;
-    margin-bottom: 12px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.detail-row:last-child {
-    border-bottom: none;
-}
-
-.detail-row.notes {
-    flex-direction: column;
-}
-
-.detail-label {
-    width: 120px;
-    font-weight: 600;
-    color: var(--text-muted);
-    font-size: 14px;
-}
-
-.detail-value {
-    flex: 1;
-    font-size: 14px;
-}
-
-/* Added interaction timeline from customer.css */
-.interaction-timeline {
-    border-left: 2px solid var(--border-color);
-    padding-left: 20px;
-    margin-top: 16px;
-}
-
-.interaction-item {
-    position: relative;
-    padding-bottom: 16px;
-}
-
-.interaction-item::before {
-    content: '';
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background-color: white;
-    border: 2px solid var(--primary);
+.close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    left: -26px;
-    top: 4px;
-}
-
-.interaction-time {
-    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--text-muted);
-    margin-bottom: 4px;
+    transition: var(--transition);
 }
 
-.interaction-type {
-    font-weight: 600;
-    margin-bottom: 4px;
+.close-btn:hover {
+    background-color: var(--gray-light);
+    color: var(--danger);
 }
 
-.interaction-content {
-    font-size: 14px;
-    color: var(--text-dark);
+/* Notification styling */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 4px;
+    color: white;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 9999;
+}
+
+.notification.success {
+    background-color: var(--success);
+}
+
+.notification.error {
+    background-color: var(--danger);
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Responsive adjustments */
@@ -689,23 +672,23 @@ input:focus, select:focus, textarea:focus {
         font-size: 20px;
     }
 
+    .main-content {
+        margin-left: 0;
+    }
+
     .actions-row {
         flex-direction: column;
         gap: 16px;
-        align-items: flex-start;
     }
 
     .filter-group {
         width: 100%;
-        flex-wrap: wrap;
     }
 
     .filter-group select {
         flex: 1;
-        min-width: 140px;
     }
     
-    /* Added from customer.css */
     .form-row {
         flex-direction: column;
     }
@@ -722,13 +705,6 @@ input:focus, select:focus, textarea:focus {
         gap: 16px;
     }
 
-    /* Changed to match customer.css */
-    .header-actions {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    /* Added from customer.css */
     .search-bar {
         width: 100%;
         margin-right: 0;
@@ -738,18 +714,18 @@ input:focus, select:focus, textarea:focus {
         width: 100%;
     }
 
-    .record-table {
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .data-table {
         display: block;
         overflow-x: auto;
     }
     
-    /* Modified to match customer.css's approach */
-    .form-row {
-        grid-template-columns: unset;
-    }
-    
-    .modal-content {
-        width: 95%;
+    .cust-details-grid {
+        grid-template-columns: 1fr;
     }
 
     .nav-menu ul {
@@ -763,41 +739,4 @@ input:focus, select:focus, textarea:focus {
         background: rgba(255, 255, 255, 0.1);
         color: #ff6b6b;
     }
-}
-
-/* Specific styles for record view modal */
-#viewRecordContent .detail-row .detail-value {
-    font-weight: 500;
-}
-
-#viewRecordContent .detail-row .detail-value:has(+ .detail-label:contains("Amount")) {
-    color: var(--success);
-    font-weight: 600;
-}
-
-.notification {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 15px 20px;
-    border-radius: 4px;
-    color: white;
-    font-weight: 500;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.3s, transform 0.3s;
-    z-index: 9999;
-}
-
-.notification.success {
-    background-color: #4CAF50;
-}
-
-.notification.error {
-    background-color: #F44336;
-}
-
-.notification.show {
-    opacity: 1;
-    transform: translateY(0);
 }

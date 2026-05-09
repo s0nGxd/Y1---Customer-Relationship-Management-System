@@ -1,12 +1,6 @@
 <?php
-session_start();
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
-    header("Location: login.php");
-    exit();
-}
-
-// search data for later use (sales team overview)
-require_once 'db_connect.php';
+require_once 'auth.php';
+require_role('admin');
 
 // Get top 4 sales reps by number of customers
 $sales_reps = [];
@@ -69,7 +63,7 @@ $conn->close();
     <title>Admin Dashboard | CRM</title>
 
     <!-- STYLESHEET -->
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Font -->
@@ -114,7 +108,7 @@ $conn->close();
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="Lead.php" class="nav-link">
+                        <a href="lead.php" class="nav-link">
                             <i class="fas fa-stream"></i>
                             <span>Leads</span>
                         </a>
@@ -257,7 +251,7 @@ $conn->close();
                 <section class="panel">
                     <div class="panel-header">
                         <h3 class="panel-title">Recent Leads</h3>
-                        <a href="Lead.php" class="btn btn-outline">View All</a>
+                        <a href="lead.php" class="btn btn-outline">View All</a>
                     </div>
                     <div class="panel-body">
                         <table class="data-table">
@@ -347,7 +341,7 @@ $conn->close();
         </div>
     </div>
 
-    <script src="navigation.js"></script>
-    <script src="admin.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/admin.js"></script>
 </body>
 </html>

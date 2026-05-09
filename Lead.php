@@ -1,32 +1,10 @@
 <?php
-session_start();
-require 'db_connect.php'; // should define $host, $username, $password, $dbname
-
-// Connect once using MySQLi
-$conn = new mysqli($host, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    error_log("Connection failed: " . $conn->connect_error);
-    die("Database connection failed.");
-}
+require_once 'auth.php';
 
 // Fetch user role and ID from session
-$userRole = $_SESSION['role'] ?? '';
-$userId = $_SESSION['user_id'] ?? 0;
-$userName = '';
-
-// Fetch user's name
-if ($userId) {
-    $stmt = $conn->prepare("SELECT name FROM users WHERE user_id = ?");
-    $stmt->bind_param('i', $userId);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($row = $result->fetch_assoc()) {
-        $userName = $row['name'] ?? '';
-    }
-    $stmt->close();
-}
+$userRole = $_SESSION['role'];
+$userId = $_SESSION['user_id'];
+$userName = $_SESSION['name'] ?? '';
 
 $query = "SELECT 
     l.lead_id,
@@ -66,9 +44,17 @@ foreach ($leads as $lead) {
     if ($lead['lead_status'] === 'In Progress') $inProgressLeads++;
 }
 
-// Close MySQLi connection
+// Fetch sales reps for modals
+$sales_reps_list = [];
+if ($userRole === 'admin') {
+    $rep_result = $conn->query("SELECT user_id, name FROM users WHERE role='sales_rep'");
+    if ($rep_result) {
+        $sales_reps_list = $rep_result->fetch_all(MYSQLI_ASSOC);
+        $rep_result->free();
+    }
+}
+
 $stmt->close();
-$conn->close();
 ?>
 
 
@@ -78,7 +64,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lead Management | CRM</title>
-    <link rel="stylesheet" href="lead.css">
+    <link rel="stylesheet" href="css/lead.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
@@ -304,12 +290,9 @@ $conn->close();
                         <?php if ($userRole === 'admin'): ?>
                             <select id="Assigned" name="sales_rep_id" required>
                                 <?php
-                                $conn = new mysqli($host, $username, $password, $dbname);
-                                $sales_reps = $conn->query("SELECT user_id, name FROM users WHERE role='sales_rep'");
-                                while ($rep = $sales_reps->fetch_assoc()) {
+                                foreach ($sales_reps_list as $rep) {
                                     echo "<option value='{$rep['user_id']}'>{$rep['name']}</option>";
                                 }
-                                $conn->close();
                                 ?>
                             </select>
                         <?php else: ?>
@@ -354,12 +337,9 @@ $conn->close();
                             <?php if ($userRole === 'admin'): ?>
                                 <select id="editAssigned" name="sales_rep_id" required>
                                     <?php
-                                    $conn = new mysqli($host, $username, $password, $dbname);
-                                    $sales_reps = $conn->query("SELECT user_id, name FROM users WHERE role='sales_rep'");
-                                    while ($rep = $sales_reps->fetch_assoc()) {
+                                    foreach ($sales_reps_list as $rep) {
                                         echo "<option value='{$rep['user_id']}'>{$rep['name']}</option>";
                                     }
-                                    $conn->close();
                                     ?>
                                 </select>
                             <?php else: ?>
@@ -414,6 +394,7 @@ $conn->close();
         </div>
     </div>
 
-    <script src="lead.js"></script>
-</body>
-</html>
+    <script src="js/lead.js"></script>
+    </body>
+    </html>
+    <?php $conn->close(); ?>

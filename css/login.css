@@ -57,7 +57,7 @@ body{
 .background {
     width: 100%;
     height: 100vh;
-    background: url('background.webp') no-repeat;
+    background: url('../assets/background.webp') no-repeat;
     background-size: cover;
     background-position: center;
     filter: blur(10px);
@@ -148,22 +148,6 @@ body{
     transition-delay: .5s;
 }
 
-.logreg-box.active .form-box.login {
-    transform: translateX(430px);
-    transition-delay: 0s;
-}
-
-.logreg-box .form-box.register{
-    transform: translateX(430px);
-    transition: transform .6s ease;
-    transition-delay: 0s;
-}
-
-.logreg-box.active .form-box.register{
-    transform: translateY(0);
-    transition-delay: .7s;
-}
-
 .form-box h2 {
     font-size: 32px;
     text-align: center;
@@ -245,23 +229,6 @@ body{
     color: whitesmoke;
     font-weight: 500;
     box-shadow: 0 0 10px rgb(0,0,0, .5);
-}
-
-.form-box .login-register{
-    font-size: 14.5px;
-    font-weight: 500;
-    text-align: center;
-    margin-top: 25px;
-}
-
-.login-register p a {
-    color: whitesmoke;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.login-register p a:hover {
-    text-decoration: underline;
 }
 
 .error-msg {

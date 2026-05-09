@@ -1,4 +1,4 @@
-/* Updated Lead.css to match Record.css styling */
+/* Updated lead.css to match record.css styling */
 :root {
     --primary-color: #4a6cf7;
     --primary-dark: #3a5ce5;
@@ -17,7 +17,7 @@
     --shadow-color: rgba(0, 0, 0, 0.1);
     --background-color: #f8f9fa;
     --transition: all 0.3s ease;  /* Matches customer.css */
-    /* Updated font-family to match Record.css */
+    /* Updated font-family to match record.css */
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Added from customer.css */
 }
@@ -32,7 +32,7 @@ body {
     font-family: var(--font-family);
     background-color: var(--background-color);
     color: var(--text-color);
-    line-height: 1.5; /* Updated to match Record.css line-height */
+    line-height: 1.5; /* Updated to match record.css line-height */
 }
 
 .container {
@@ -47,7 +47,7 @@ body {
     grid-template-columns: 250px 1fr 350px;
 }
 
-/* Sidebar styling - updated to match Record.css */
+/* Sidebar styling - updated to match record.css */
 .sidebar {
     width: 250px;
     background: var(--dark-color);
@@ -153,7 +153,7 @@ body {
     gap: 20px;
 }
 
-/* Updated search bar to match Record.css */
+/* Updated search bar to match record.css */
 .search-bar {
     position: relative;
     display: flex;
@@ -206,7 +206,7 @@ body {
     justify-content: center;
 }
 
-/* Updated user avatar to match Record.css */
+/* Updated user avatar to match record.css */
 .user-avatar {
     width: 40px;
     height: 40px;
@@ -219,7 +219,7 @@ body {
     font-weight: bold;
 }
 
-/* Added avatar sizing variants from Record.css */
+/* Added avatar sizing variants from record.css */
 .user-avatar.small {
     width: 30px;
     height: 30px;
@@ -235,10 +235,10 @@ body {
 .user-info {
     display: flex;
     flex-direction: column;
-    line-height: 1.3; /* Updated to match Record.css */
+    line-height: 1.3; /* Updated to match record.css */
 }
 
-/* Added user-info-row from Record.css */
+/* Added user-info-row from record.css */
 .user-info-row {
     display: flex;
     align-items: center;
@@ -246,7 +246,7 @@ body {
 
 .user-name {
     font-weight: 600;
-    font-size: 15px; /* Updated to match Record.css */
+    font-size: 15px; /* Updated to match record.css */
 }
 
 .user-role {
@@ -373,10 +373,10 @@ body {
     border: 1px solid var(--border-color);
     background-color: white;
     outline: none;
-    transition: var(--transition); /* Added from Record.css */
+    transition: var(--transition); /* Added from record.css */
 }
 
-/* Added hover and focus effects from Record.css */
+/* Added hover and focus effects from record.css */
 .filter-group select:hover {
     border-color: var(--primary-light);
 }
@@ -547,7 +547,7 @@ gap: 8px;
     font-size: 18px;
     cursor: pointer;
     color: var(--text-muted);
-    /* Added from Record.css */
+    /* Added from record.css */
     width: 32px;
     height: 32px;
     border-radius: 4px;
@@ -603,7 +603,7 @@ gap: 8px;
     color: var(--dark-color);
 }
 
-/* Updated detail fields to match Record.css styling */
+/* Updated detail fields to match record.css styling */
 .detail-field {
     display: flex;
     margin-bottom: 10px;
@@ -619,12 +619,12 @@ gap: 8px;
     width: 30%;
     font-weight: 500;
     color: var(--text-muted);
-    font-size: 14px; /* Added from Record.css */
+    font-size: 14px; /* Added from record.css */
 }
 
 .detail-field span {
     width: 70%;
-    font-size: 14px; /* Added from Record.css */
+    font-size: 14px; /* Added from record.css */
 }
 
 .record-details {
@@ -672,26 +672,26 @@ gap: 8px;
     max-width: 600px; /* Match record modal width */
 }
 
-/* Updated interaction timeline to match Record.css */
+/* Updated interaction timeline to match record.css */
 .interaction-timeline {
     max-height: 300px;
     overflow-y: auto;
-    border-left: 2px solid var(--border-color); /* Added from Record.css */
-    padding-left: 20px; /* Added from Record.css */
-    margin-top: 16px; /* Added from Record.css */
+    border-left: 2px solid var(--border-color); /* Added from record.css */
+    padding-left: 20px; /* Added from record.css */
+    margin-top: 16px; /* Added from record.css */
 }
 
 .interaction-item {
     padding: 12px 0;
     border-bottom: 1px solid var(--border-color);
-    position: relative; /* Added from Record.css */
+    position: relative; /* Added from record.css */
 }
 
 .interaction-item:last-child {
     border-bottom: none;
 }
 
-/* Added timeline marker from Record.css */
+/* Added timeline marker from record.css */
 .interaction-item::before {
     content: '';
     position: absolute;
@@ -717,7 +717,7 @@ gap: 8px;
 
 .interaction-content {
     font-size: 14px;
-    color: var(--text-color); /* Updated to match Record.css */
+    color: var(--text-color); /* Updated to match record.css */
 }
 
 .action-buttons {
@@ -769,10 +769,10 @@ gap: 8px;
     align-items: center;
     padding: 20px;
     border-bottom: 1px solid var(--border-color);
-    position: sticky; /* Added from Record.css */
-    top: 0; /* Added from Record.css */
-    background-color: white; /* Added from Record.css */
-    z-index: 1; /* Added from Record.css */
+    position: sticky; /* Added from record.css */
+    top: 0; /* Added from record.css */
+    background-color: white; /* Added from record.css */
+    z-index: 1; /* Added from record.css */
 }
 
 .modal-header h2 {
@@ -798,8 +798,8 @@ gap: 8px;
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
-    font-size: 14px; /* Added from Record.css */
-    color: var(--text-color); /* Updated to match Record.css */
+    font-size: 14px; /* Added from record.css */
+    color: var(--text-color); /* Updated to match record.css */
 }
 
 .form-group input,
@@ -812,10 +812,10 @@ gap: 8px;
     background-color: white;
     font-family: var(--font-family);
     font-size: 14px;
-    transition: var(--transition); /* Added from Record.css */
+    transition: var(--transition); /* Added from record.css */
 }
 
-/* Added focus styles from Record.css */
+/* Added focus styles from record.css */
 .form-group input:focus,
 .form-group select:focus, 
 .form-group textarea:focus {
@@ -972,7 +972,7 @@ gap: 8px;
         display: none;
     }
     
-    /* Added from Record.css */
+    /* Added from record.css */
     .form-row {
         flex-direction: column;
     }
@@ -1046,7 +1046,7 @@ gap: 8px;
         left: 0;
     }
 
-    /* Keep other Lead.css specific styles */
+    /* Keep other lead.css specific styles */
     .lead-table th:nth-child(6),
     .lead-table td:nth-child(6) {
         display: none;

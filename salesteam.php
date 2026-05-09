@@ -1,30 +1,11 @@
 <?php
-// Include database connection
-session_start();
-require_once 'db_connect.php';
-
-// Check connection
-if ($conn->connect_error) {
-    error_log("Connection failed: " . $conn->connect_error);
-    die("Database connection failed.");
-}
+require_once 'auth.php';
+require_role('admin');
 
 // Fetch user role and ID from session
-$userRole = $_SESSION['role'] ?? '';
-$userId = $_SESSION['user_id'] ?? 0;
-$userName = '';
-
-// Fetch user's name
-if ($userId) {
-    $stmt = $conn->prepare("SELECT name FROM users WHERE user_id = ?");
-    $stmt->bind_param('i', $userId);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($row = $result->fetch_assoc()) {
-        $userName = $row['name'] ?? '';
-    }
-    $stmt->close();
-}
+$userRole = $_SESSION['role'];
+$userId = $_SESSION['user_id'];
+$userName = $_SESSION['name'] ?? '';
 
 // Function to get sales representatives
 function getSalesReps($conn) {
@@ -71,7 +52,7 @@ function getInitials($name) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales Team | CRM</title>
-    <link rel="stylesheet" href="team.css">
+    <link rel="stylesheet" href="css/team.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Font -->
@@ -111,13 +92,13 @@ function getInitials($name) {
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="Record.php" class="nav-link">
+                        <a href="record.php" class="nav-link">
                             <i class="fas fa-file-invoice"></i>
                             <span>Records</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="Lead.php" class="nav-link">
+                        <a href="lead.php" class="nav-link">
                             <i class="fas fa-stream"></i>
                             <span>Leads</span>
                         </a>
@@ -446,7 +427,8 @@ function getInitials($name) {
         </div>
     </div>
 
-    <script src="navigation.js"></script>
-    <script src="team.js"></script>
-</body>
-</html>
+    <script src="js/navigation.js"></script>
+    <script src="js/team.js"></script>
+    </body>
+    </html>
+    <?php $conn->close(); ?>

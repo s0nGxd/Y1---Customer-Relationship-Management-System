@@ -1,6 +1,6 @@
 <?php
-// Include database connection
-require_once 'db_connect.php';
+require_once 'auth.php';
+require_role('admin');
 
 // Check if request is AJAX
 header('Content-Type: application/json');

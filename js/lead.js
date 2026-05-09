@@ -239,7 +239,7 @@ function showNotification(message) {
 }
 
 
-// Add this code after the makeStatusBadgesClickable function in Lead.js
+// Add this code after the makeStatusBadgesClickable function in lead.js
 
 // Make each row in the lead table clickable to show details
 function makeLeadRowsClickable() {

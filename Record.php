@@ -1,32 +1,16 @@
 <?php
-// Display all PHP errors
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-//Start Session
-session_start();
-require 'db_connect.php';
+require_once 'auth.php';
 
 // Fetch user role and ID from session
-$userRole = $_SESSION['role'] ?? '';
-$userId = $_SESSION['user_id'] ?? 0;
+$userRole = $_SESSION['role'];
+$userId = $_SESSION['user_id'];
 $recordsCount = 0;
 $totalRevenue = 0;
-$userName = '';
+$userName = $_SESSION['name'] ?? '';
 $recordsData = [];
 $customer = []; // Initialize customers array
 
 try {
-    // Include database connection
-    require_once 'db_connect.php';
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        throw new Exception("Connection failed: " . $conn->connect_error);
-    }
-
     // Function to get initials
     function getInitials($name) {
         $nameParts = explode(' ', $name);
@@ -114,7 +98,7 @@ try {
     
 } catch (Exception $e) {
     // Log the error
-    error_log("Error in Record.php: " . $e->getMessage());
+    error_log("Error in record.php: " . $e->getMessage());
     
     // Display error for debugging
     echo "An error occurred: " . $e->getMessage();
@@ -127,8 +111,8 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Records | CRM</title>
-    <link rel="stylesheet" href="Record.css">
+    <title>Sales Records | CRM</title>
+    <link rel="stylesheet" href="css/record.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Font -->
@@ -495,7 +479,7 @@ try {
         // Pass PHP data to JavaScript
         const recordsData = <?php echo json_encode($recordsData ?? []); ?>;
     </script>
-    <script src="navigation.js"></script>
-    <script src="Record.js"></script>
-</body>
+    <script src="js/navigation.js"></script>
+    <script src="js/record.js"></script>
+    </body>
 </html>
